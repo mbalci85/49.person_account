@@ -25,3 +25,48 @@
 // 8.
 // Print this user accounts info in to the console.
 // Example output: “Bruce Brown has total 260$ profit today”
+
+const personAccount = {
+	firstName: 'Mustafa',
+	lastName: 'Balci',
+	incomes: [100, 150, 250],
+	expenses: [150, 100, 200],
+	totalIncome() {
+		return `${this.firstName} ${
+			this.lastName
+		} has total income: ${this.incomes.reduce(
+			(acc, value) => acc + value,
+			0,
+		)}`;
+	},
+	totalExpense() {
+		return `${this.firstName} ${
+			this.lastName
+		} has total expenses: ${this.expenses.reduce(
+			(acc, value) => acc + value,
+			0,
+		)}`;
+	},
+	addIncome(income) {
+		return this.incomes.push(income);
+	},
+	addExpenses(expense) {
+		return this.expenses.push(expense);
+	},
+	accountInfo() {
+		return `${this.firstName} ${this.lastName} has total ${
+			this.incomes.reduce((acc, value) => acc + value, 0) -
+			this.expenses.reduce((acc, value) => acc + value, 0)
+		} profit today`;
+	},
+};
+
+console.log(personAccount.totalIncome());
+console.log(personAccount.totalExpense());
+
+personAccount.addIncome(200);
+personAccount.addExpenses(100);
+
+console.log(personAccount.totalIncome());
+console.log(personAccount.totalExpense());
+console.log(personAccount.accountInfo());
